@@ -1,0 +1,5 @@
+CTG 0 4
+TGA 1
+GAC 2
+TGG 5
+CTT -1

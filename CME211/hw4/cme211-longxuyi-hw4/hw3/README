@@ -1,0 +1,48 @@
+HW3 README
+
+In this code an Airfoil class is created to read and process data files
+associated with an airfoil at multiple angles of attack. 
+
+The object of the Airfoil class is then printed in the main.py file. The data of the object
+is imported from files in the specified directory and encapsulated in internal data strutures
+created by methods in the class.
+
+Program decomposition & Data encapsulation:
+
+There are total of 6 methods created in the Airfoil class to decompose the program:
+
+1.__init__ (self, naca_folder)
+This initialization method creates a instance for the main.py file.
+ 
+2.self.load_geometry(self,naca_folder)
+This function reads data from xy.dat file and encapsulate exported data into a list 
+containing (x,y) coordiniates for the panel.
+
+3.self.load_alpha(self,naca_folder)
+This function creates a dictionary to encapsulate Cp values for each angle of attack, 
+with each angle as a key and corresponding a list of Cp. 
+
+4.self.find_lift_coeff(self,geometry, alpha)
+This function calculates lift coefficient for each angle of attack.
+
+5.self.find_stag_point(self,geometry, alpha)
+This function calculates the stagnation points at different alpha 
+angles and return a list of stagnation points
+
+6.self.generate_summary()
+Generate a summary of lift coefficient and stagnation points at different alpha angles
+
+
+Error handling:
+
+Errors are rasied in three cases in the program:
+1. when the argument to Airfoil class is not a valid directory. 
+error message: not a valid directory
+
+2. when required data files cannot be found int the data directory.
+error message: data file cannot be found.
+
+3.error is detected in reading an input file
+error message: errors in the data file.
+
+

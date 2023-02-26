@@ -1,0 +1,60 @@
+HW2 README
+
+1. What were you considerations when creating this data?
+
+The datasets should be able to handle serveral edge cases:
+
+1). when user number is less than threshold needed to make a comparison 
+2). When denominator is zero (when a movie got the same ratings from all users)
+3). The format and the sequence of user id, ovie id and moving rating of the test dataset is
+is the same as the real data. Time stamps are made up using 0s.
+
+2. Were there certain characteristics of read data and file format that you made sure to capture in your test data?
+
+Yes the test data file has the same format as the u.data file, which contains user id, movie id, and movie rating respectively. Also the user id and movie id are consective integers starting at 1. 
+
+3. Did you create a reference soution for your test data? if so, how?
+
+In the test data there are 10 users and 4 movies, with the common user threshold as 3. By hand caclculating similarities between each movies, I was able to verify the output generated from the program. Here is the output for the test data.
+
+100 (500,1.0,4)
+200 (600,1.0,3)
+300 (600,0.87,3)
+400 (500,0.98,3)
+500 (100,1.0,4)
+600 (200,1.0,3)
+
+4. command log of of computing u.data and first 10 lines of the output file
+
+$ python3 similarity.py u.data similarities.txt 5
+Input MovieLens file: u.data
+Output MovieLens file: similarities.txt
+Minimum Number of common users: 5
+Read 100000 lines with total of 1682 movies and 943 users
+Computed similarities in 89.434 seconds
+
+1 (885,1.0,6)
+2 (1056,1.0,5)
+3 (1081,0.98,5)
+4 (1473,0.89,5)
+5 (1050,1.0,5)
+6 (1017,0.99,5)
+7 (968,1.0,7)
+8 (590,0.89,6)
+9 (113,1.0,5)
+10 (493,1.0,8)
+
+
+
+5. Program decomposition
+
+The program has two main sections. The first section is to create a one dictionary with key as movie ids and value as a nested dictionary, in which the key are users and value are rating for the movie from the user. The second section compare movies to each other and find the most similar movie for each. There are total of four functions created in this program to make it more concise and easier to test and debug. 
+
+List of 4 functions:
+
+create_dict(filename): create a dictionary from the datafile
+user_count(filename): find number of users
+line_count(filename): find number of lines in the datafile
+com_users(movie1, movie2): find a set of common users between movie1 and movie2
+
+

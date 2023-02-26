@@ -1,0 +1,23 @@
+Program Summary
+
+In this program, a image class is developed to implement following tasks:
+1.Read and write jpeg files
+2.Smooth (blur) the image using the kernels of specified sizes
+3.Compute the sharpness of the resulting image after blurring.
+
+
+Image class decomposition:
+
+Convolution()
+The Convolution function takes an input image array, an unassigned output image array, 
+and a kernel as inputs, and update the output image array. For each element in the input array, the corresponding element in the output is calcuated by summing up the product of surrounding element and its coresponding element in the kernel. If the surrounding element is out of bound, the corresponding value at row = 0 or col = 0 will be used.
+
+BoxBlur()
+The Boxblur function takes a kernel size as input and call the convolution function to blur the image
+
+Sharpness()
+The Sharpness function returns the sharpness of the image, which is the max value of the convolution output. It uses a laplacian operator kernel to compute the resulting image from Boxblur. 
+
+main.cpp file:
+7 blurred jpeg images are generated using box blur kernel size of 3,7,11,15,19,23, and 27.
+the shaprness of the original image and blurred images are printed out as usage information in the terminal.
